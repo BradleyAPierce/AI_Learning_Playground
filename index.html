@@ -20,7 +20,10 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Optionally Add FontAwesome for extra icons (if desired) -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <!-- begin navbar -->
@@ -69,6 +72,37 @@
       </div>
     </nav>
     <!-- end navbar -->
+
+    <!-- begin header -->
+    <div class="position-relative text-center bg-dark" style="height: 400px">
+      <!-- Background Image -->
+      <img
+        src="https://github.com/BradleyAPierce/AI_Playbook_Images/blob/main/AdobeStock_1225534257.jpeg?raw=true"
+        class="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
+        alt="Header Background"
+        style="opacity: 0.6"
+      />
+
+      <!-- Dark Overlay -->
+      <div
+        class="position-absolute top-0 start-0 w-100 h-100"
+        style="background: rgba(0, 0, 0, 0.6)"
+      ></div>
+
+      <!-- Overlayed Content -->
+      <div
+        class="position-relative d-flex flex-column justify-content-center align-items-center h-100"
+        style="z-index: 1"
+      >
+        <h1 class="display-1 fw-bold text-white">AI Agent Playground</h1>
+        <p class="lead mb-4 text-white">
+          Learning how to build AI Agents from the ground up!
+        </p>
+        <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+      </div>
+    </div>
+    <!-- end header -->
+
     <h1 class="text-center mt-5">Welcome to Your Bootstrap 5 Website!</h1>
 
     <!-- Your site content goes here -->
