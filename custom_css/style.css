@@ -15,10 +15,18 @@
   
   /* Example: Custom button style */
   .btn-custom {
+    /* Your existing styles */
     background-color: #2a4365;
     color: #fff;
     border: 0;
     transition: background 0.2s;
+  
+    /* New styles for sizing */
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    width: auto;          /* Don't stretch */
+    min-width: 120px;     /* Optional: ensure minimum button size */
+    display: inline-block;/* Keeps it inline, not block level */
   }
   .btn-custom:hover {
     background-color: #1a2838;
