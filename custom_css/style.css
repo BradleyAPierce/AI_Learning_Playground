@@ -1,11 +1,11 @@
 /* Custom Card Image Styling */
 .card-img-top {
-    width: 100%;           /* Responsive width */
-    height: 350px;         /* Fixed height for card uniformity */
-    object-fit: cover;     /* Crops image to cover area nicely */
-    object-position: center; /* Keeps the image center-focused */
+    width: 100%;                   /* Responsive width */
+    height: 350px;                 /* Fixed height for card uniformity */
+    object-fit: cover;             /* Crops image to cover area nicely */
+    object-position: center;       /* Keeps the image center-focused */
     display: block;
-    border-top-left-radius: 0.5rem; /* Bootstrap-like rounding */
+    border-top-left-radius: 0.5rem;  /* Bootstrap-like rounding */
     border-top-right-radius: 0.5rem;
     /* Optional box shadow for depth */
     box-shadow: 0 2px 8px rgba(0,0,0,0.11);
@@ -33,15 +33,15 @@
   .card-custom:hover {
     box-shadow: 0 4px 24px rgba(42,67,101,0.18);
   }
-
+  
+  /* Custom margin-top classes */
   .mt-custom-sm { 
     margin-top: 20px; 
-    }
-
-    .mt-custom-md { 
-        margin-top: 40px; 
-    }
-
-    .mt-custom-lg { 
-        margin-top: 80px;
-    }
+  }
+  .mt-custom-md { 
+    margin-top: 40px; 
+  }
+  .mt-custom-lg { 
+    margin-top: 80px;
+  }
+  
