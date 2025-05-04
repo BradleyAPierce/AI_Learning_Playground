@@ -51,4 +51,23 @@
   .mt-custom-xxl { 
     margin-top: 160px;
   }
+
+   /* Custom margin-bottom classes */
+   .mb-custom-sm { 
+    margin-bottom: 20px; 
+  }
+  .mb-custom-md { 
+    margin-bottom: 40px; 
+  }
+  .mt-custom-lg { 
+    margin-bottom: 80px;
+  }
+
+  .mt-custom-xl { 
+    margin-bottom: 120px;
+  }
+
+  .mt-custom-xxl { 
+    margin-bottom: 160px;
+  }
   
