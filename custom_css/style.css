@@ -1,0 +1,36 @@
+/* Custom Card Image Styling */
+.card-img-top {
+    width: 100%;           /* Responsive width */
+    height: 350px;         /* Fixed height for card uniformity */
+    object-fit: cover;     /* Crops image to cover area nicely */
+    object-position: center; /* Keeps the image center-focused */
+    display: block;
+    border-top-left-radius: 0.5rem; /* Bootstrap-like rounding */
+    border-top-right-radius: 0.5rem;
+    /* Optional box shadow for depth */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.11);
+  }
+  
+  /* Add your future custom classes below */
+  
+  /* Example: Custom button style */
+  .btn-custom {
+    background-color: #2a4365;
+    color: #fff;
+    border: 0;
+    transition: background 0.2s;
+  }
+  .btn-custom:hover {
+    background-color: #1a2838;
+    color: #ffd700;
+  }
+  
+  /* Example: Custom card style */
+  .card-custom {
+    border: 2px solid #2a4365;
+    transition: box-shadow 0.2s;
+  }
+  .card-custom:hover {
+    box-shadow: 0 4px 24px rgba(42,67,101,0.18);
+  }
+  
