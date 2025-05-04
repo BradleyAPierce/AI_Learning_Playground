@@ -33,4 +33,15 @@
   .card-custom:hover {
     box-shadow: 0 4px 24px rgba(42,67,101,0.18);
   }
-  
+
+  .mt-custom-sm { 
+    margin-top: 20px; 
+    }
+
+    .mt-custom-md { 
+        margin-top: 40px; 
+    }
+
+    .mt-custom-lg { 
+        margin-top: 80px;
+    }
