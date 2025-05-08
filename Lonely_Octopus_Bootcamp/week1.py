@@ -34,7 +34,7 @@ from langchain.agents import initialize_agent, AgentType
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
-from langchain.tools import Tool
+from langchain.tools import StructuredTool
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -62,15 +62,19 @@ def create_task_generator_agent():
     # Initialize the language model
     llm = ChatOpenAI(temperature=0, model="gpt-4")
     
-    # Create a real function for the tool
-    def task_generator_func(*args, **kwargs):
-        # For debugging, show what was received
-        return f"Task Generator received args: {args}, kwargs: {kwargs}"
+    # Create a real function for the structured tool
+    def task_generator_func(goal, task_breakdown, success_criteria):
+        # For now, just echo the input arguments. You can expand this logic as needed.
+        return (
+            f"Goal: {goal}\n"
+            f"Task Breakdown: {task_breakdown}\n"
+            f"Success Criteria: {success_criteria}"
+        )
 
-    # Create a tool for task generation
-    task_generator_tool = Tool(
-        name="TaskGenerator",
+    # Create a StructuredTool for task generation
+    task_generator_tool = StructuredTool.from_function(
         func=task_generator_func,
+        name="TaskGenerator",
         description="Helps break down goals into actionable tasks"
     )
     
