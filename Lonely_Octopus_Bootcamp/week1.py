@@ -62,10 +62,15 @@ def create_task_generator_agent():
     # Initialize the language model
     llm = ChatOpenAI(temperature=0, model="gpt-4")
     
+    # Create a real function for the tool
+    def task_generator_func(input_text):
+        # For now, just echo the input. You can expand this logic as needed.
+        return f"Task Generator received: {input_text}"
+
     # Create a tool for task generation
     task_generator_tool = Tool(
         name="TaskGenerator",
-        func=lambda x: "Task generation tool",
+        func=task_generator_func,
         description="Helps break down goals into actionable tasks"
     )
     
