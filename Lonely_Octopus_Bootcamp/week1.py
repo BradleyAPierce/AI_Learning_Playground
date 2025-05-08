@@ -63,17 +63,29 @@ def create_task_generator_agent():
     llm = ChatOpenAI(temperature=0, model="gpt-4")
     
     # Create a real function for the single-input tool
-    def task_generator_func(input_text):
-        # For now, just echo the input. You can expand this logic as needed.
-        return f"Task Generator received: {input_text}"
+    def task_generator_func(goal_text):
+        # Here, you could call another LLM, or just echo for now
+        return f"Received goal: {goal_text}"
 
     # Create a Tool for task generation
     task_generator_tool = Tool(
         name="TaskGenerator",
         func=task_generator_func,
-        description="Helps break down goals into actionable tasks"
+        description="Breaks down a sales goal into actionable tasks and success criteria. Input should be a single string describing the goal."
     )
     
+    agent_kwargs={
+        "system_message": (
+            "You are a Task Generator agent that helps users break down their goals into small, achievable tasks. "
+            "When you use the TaskGenerator tool, always pass the entire user goal as a single string. "
+            "Do not attempt to pass structured data or multiple arguments. "
+            "Format your response in two sections: "
+            "1. Task Breakdown: List all tasks with their dependencies. "
+            "2. Success Criteria: For each task, list what success looks like. "
+            "Never answer anything unrelated to AI Agents."
+        )
+    }
+
     # Initialize the agent
     agent = initialize_agent(
         tools=[task_generator_tool],
@@ -84,21 +96,7 @@ def create_task_generator_agent():
             memory_key="chat_history",
             return_messages=True
         ),
-        agent_kwargs={
-            "system_message": """You are a Task Generator agent that helps users break down their goals into small, achievable tasks.
-            For any goal, analyze it and create a structured plan with specific actionable steps.
-            Each task should be concrete, time-bound when possible, and manageable.
-            Organize tasks in a logical sequence with dependencies clearly marked.
-            
-            For each task, also provide clear success criteria that answer "What does good look like?"
-            Success criteria should be specific, measurable, and achievable.
-            
-            Format your response in two sections:
-            1. Task Breakdown: List all tasks with their dependencies
-            2. Success Criteria: For each task, list what success looks like
-            
-            Never answer anything unrelated to AI Agents."""
-        }
+        agent_kwargs=agent_kwargs
     )
     
     return agent
