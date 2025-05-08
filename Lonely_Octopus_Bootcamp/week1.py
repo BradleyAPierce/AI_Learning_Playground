@@ -35,9 +35,16 @@ from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
 from langchain.tools import Tool
 
+# Get the directory where the script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(script_dir, '.env')
+
 # Load environment variables from .env file (only in local environment)
-if os.path.exists('.env'):
-    load_dotenv(override=True)
+if os.path.exists(env_path):
+    load_dotenv(env_path, override=True)
+    print(f"Loaded .env file from: {env_path}")
+else:
+    print(f"Warning: .env file not found at: {env_path}")
 
 # Get API key from environment variables
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
