@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prompt Engineering for Agent Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-light">
+
+  <header class="bg-primary bg-gradient text-white py-4 mb-4">
+    <div class="container text-center">
+      <h1 class="display-5 mb-2">Prompt Engineering for Agents</h1>
+      <span class="fs-5">Sales Training Program Edition</span>
+      <p class="lead mt-2">How smart instructions unlock the real magic of AI agents – and save you money.</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10">
+
+        <div class="alert alert-info shadow-sm mb-4" role="alert">
+          <strong>What is Prompting?</strong> 
+          <br>
+          <em>Prompting</em> is the art and science of crafting effective instructions and input for AI models, especially in agent workflows. Great prompts result in smarter, faster, and more reliable outputs—while also saving costs!
+        </div>
+
+        <h2 class="mt-5 text-primary">1. Input Prompt Review</h2>
+        <p><strong>Current Prompt sent to the agent:</strong></p>
+        <pre class="bg-dark text-light rounded p-3"><code>
+agent.run(
+    f"Break down this goal into tasks and success criteria: &#123;goal&#125;
+"
+    "Please provide:
+"
+    "1. A detailed task breakdown with clear steps
+"
+    "2. For each task, specify what success looks like (success criteria)
+"
+    "Format the response in two clear sections."
+)
+        </code></pre>
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Strengths:</strong>
+            <ul>
+              <li>Clear instructions</li>
+              <li>Explicit formatting request</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <strong>Potential Issues:</strong>
+            <ul>
+              <li>Slightly verbose (could be more concise)</li>
+              <li>“Format the response in two clear sections” is vague (could specify section headers)</li>
+              <li>Might not encourage lists or markdown for clarity</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <h3 class="text-secondary">Optimized Prompt Example</h3>
+        <pre class="bg-dark text-light rounded p-3"><code>
+agent.run(
+    f"Goal: &#123;goal&#125;
+"
+    "Break this goal into clear, actionable tasks. For each task, specify the success criteria.
+"
+    "Respond in the following format:
+"
+    "## Tasks
+"
+    "1. [Task 1]
+"
+    "2. [Task 2]
+"
+    "...
+"
+    "
+"
+    "## Success Criteria
+"
+    "1. [Criteria for Task 1]
+"
+    "2. [Criteria for Task 2]"
+)
+        </code></pre>
+        <p>
+          <strong>Why this works:</strong>
+          <ul>
+            <li><b>Shorter, more direct</b> = fewer tokens</li>
+            <li><b>Explicit section headers</b> (## Tasks, ## Success Criteria) for easy parsing</li>
+            <li>Encourages numbered lists for clarity</li>
+          </ul>
+        </p>
+
+        <hr class="my-4">
+
+        <h2 class="text-primary mt-5">2. Output Prompt Handling</h2>
+        <ul>
+          <li>Ask for concise responses (“Be concise.”)</li>
+          <li>Set a <code>max_tokens</code> parameter (if using OpenAI API directly) to avoid unnecessarily long outputs</li>
+          <li>Show only the most relevant sections in your web or CLI interface</li>
+        </ul>
+
+        <hr class="my-4">
+
+        <h2 class="text-primary mt-5">3. System Message</h2>
+        <p>
+          Your agent’s system message is currently:
+          <pre class="bg-dark text-light rounded p-3"><code>
+"You are a Task Generator agent for Week X. Update this message with specific instructions for this week's focus."
+          </code></pre>
+          <strong>Tip:</strong> <br>
+          <span class="badge bg-info text-dark p-2">
+            Specialize this message! For example: “You are an expert sales trainer. Your job is to break down sales goals into actionable tasks and define clear success criteria for each.”
+          </span>
+        </p>
+
+        <hr class="my-4">
+        <h2 class="text-primary mt-5">4. General Prompt Engineering Best Practices</h2>
+        <ul>
+          <li><b>Be specific:</b> The more context you give, the better the output.</li>
+          <li><b>Avoid unnecessary words:</b> Every extra word = higher cost.</li>
+          <li><b>Use lists and markdown:</b> Easier for both you and the AI to read and return structured output.</li>
+          <li><b>Test with real user goals:</b> See if the output is clear, concise, and actionable.</li>
+        </ul>
+
+        <hr class="my-4">
+        <h2 class="text-primary mt-5">5. Example: Before &amp; After</h2>
+        <div class="alert alert-warning">
+          <strong>Before:</strong>
+          <pre class="bg-light"><code>
+Break down this goal into tasks and success criteria: Start with a customer you currently do business with
+Please provide:
+1. A detailed task breakdown with clear steps
+2. For each task, specify what success looks like (success criteria)
+Format the response in two clear sections.
+          </code></pre>
+        </div>
+        <div class="alert alert-success">
+          <strong>After:</strong>
+          <pre class="bg-light"><code>
+Goal: Start with a customer you currently do business with
+Break this goal into clear, actionable tasks. For each task, specify the success criteria.
+Respond in the following format:
+## Tasks
+1. ...
+2. ...
+
+## Success Criteria
+1. ...
+2. ...
+          </code></pre>
+        </div>
+
+        <hr class="my-4">
+        <h2 class="text-primary mt-5">6. Summary Table: Prompt Optimization</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered align-middle">
+            <thead class="table-info text-dark">
+              <tr>
+                <th>Aspect</th>
+                <th>Before (tokens/cost)</th>
+                <th>After (tokens/cost)</th>
+                <th>Clarity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Input prompt</td>
+                <td>~45</td>
+                <td>~30</td>
+                <td>Higher</td>
+              </tr>
+              <tr>
+                <td>Output structure</td>
+                <td>Vague</td>
+                <td>Explicit</td>
+                <td>Higher</td>
+              </tr>
+              <tr>
+                <td>System message</td>
+                <td>Generic</td>
+                <td>Context-specific</td>
+                <td>Higher</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr class="my-4">
+        <h2 class="text-primary mt-5">7. Actionable Suggestions</h2>
+        <ul>
+          <li><b>Update your input prompt</b> to be shorter and more structured (see example).</li>
+          <li><b>Refine your system message</b> for your agent’s specific domain.</li>
+          <li><b>Ask for concise, bullet-pointed output</b> to reduce tokens and improve usability.</li>
+          <li><b>Test and iterate:</b> Try a few real goals and see if outputs are too long or unclear.</li>
+        </ul>
+
+        <div class="alert alert-success mt-4" role="alert">
+          <strong>Want more help?</strong> <br>
+          We can provide code snippets or review actual sales goals and AI responses to fine-tune your prompting approach. Just ask!
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
