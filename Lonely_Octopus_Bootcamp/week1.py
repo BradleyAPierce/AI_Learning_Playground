@@ -152,16 +152,11 @@ async def run_cli():
     print("\nGenerated successful Prompting Techniques and Success Criteria:")
     print(tasks)
 
-def main():
-    """
-    Main function to run the program.
-    Determines whether to run the web interface or CLI based on command line arguments.
-    """
-    if st._is_running_with_streamlit:
-        run_web_interface()
-    else:
-        asyncio.run(run_cli())
-
 if __name__ == "__main__":
-    main()
+    # If running with "python week1.py --cli", use CLI
+    if len(sys.argv) > 1 and sys.argv[1] == "--cli":
+        import asyncio
+        asyncio.run(run_cli())
+    else:
+        run_web_interface()
 
