@@ -125,8 +125,6 @@ def run_web_interface():
     """
     Runs the Streamlit web interface for the Task Generator.
     """
-    import streamlit as st
-    
     st.set_page_config(page_title="AI Task Generator", layout="centered")
     st.title("Training Sales Professionals to create Effective Prompting Inputs")
     st.write("Break any goal into a set of actionable tasks with success criteria.")
@@ -159,7 +157,7 @@ def main():
     Main function to run the program.
     Determines whether to run the web interface or CLI based on command line arguments.
     """
-    if len(sys.argv) > 1 and sys.argv[1] == "--web":
+    if st._is_running_with_streamlit:
         run_web_interface()
     else:
         asyncio.run(run_cli())
