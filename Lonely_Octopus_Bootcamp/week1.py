@@ -35,11 +35,14 @@ from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
 from langchain.tools import Tool
 
-# Load environment variables from .env file
-load_dotenv(override=True)
+# Load environment variables from .env file (only in local environment)
+if os.path.exists('.env'):
+    load_dotenv(override=True)
 
 # Get API key from environment variables
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY environment variable is not set. Please set it in your environment or .env file.")
 
 def create_task_generator_agent():
     """
