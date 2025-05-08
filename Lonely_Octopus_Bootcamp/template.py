@@ -66,7 +66,7 @@ def create_task_generator_agent():
     """
     Creates an AI agent for this week's objectives.
     """
-    llm = ChatOpenAI(temperature=0, model="gpt-4")
+    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
     def task_generator_func(goal_text):
         # TODO: Update this logic for each week's focus.
         return f"Received goal: {goal_text}"

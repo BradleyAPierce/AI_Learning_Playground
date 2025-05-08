@@ -60,7 +60,7 @@ def create_task_generator_agent():
         Agent: The configured Task Generator agent
     """
     # Initialize the language model
-    llm = ChatOpenAI(temperature=0, model="gpt-4")
+    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
     
     # Create a real function for the single-input tool
     def task_generator_func(goal_text):
