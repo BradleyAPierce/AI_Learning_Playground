@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LLM Basics – Understand Large Language Models for Everyone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .myth {
+        color: #dc3545;
+        font-weight: 600;
+      }
+      .fact {
+        color: #198754;
+        font-weight: 600;
+      }
+      .table-myth-fact th,
+      .table-myth-fact td {
+        vertical-align: middle;
+      }
+      .table-myth-fact {
+        background-color: #f8f9fa;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <header class="bg-primary text-white py-4 mb-4">
+      <div class="container text-center">
+        <h1 class="display-5 mb-0">LLM Basics</h1>
+        <div class="fs-5">
+          A Friendly Introduction to Large Language Models (LLMs) and Their Role
+          in Modern AI
+        </div>
+      </div>
+    </header>
+
+    <main class="container pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <section class="mb-4">
+            <div class="alert alert-success shadow-sm">
+              <strong>Welcome!</strong> This guide is for everyone—no technical
+              background required. <br />By the end, you'll know what LLMs are,
+              why they're big news, and how they impact your work and life.
+            </div>
+          </section>
+
+          <!-- What is an LLM -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-3 mb-2">
+              🧠 What Is a Large Language Model (LLM)?
+            </h2>
+            <p>
+              An <b>LLM</b>, or <b>Large Language Model</b>, is a type of AI
+              that can read, write, summarize, translate, and answer
+              questions—using natural, human-sounding language.
+            </p>
+            <ul>
+              <li>
+                LLMs are trained by analyzing huge amounts of text from the
+                internet, books, articles, and more.
+              </li>
+              <li>
+                They are the "brains" behind today's AI assistants (like
+                ChatGPT), smart chatbots, and many business automations.
+              </li>
+              <li>
+                The "large" part means they're trained with billions of words
+                and have learned millions (or billions!) of ways people use
+                language.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Why Does This Matter? -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">✨ Why Learn About LLMs?</h2>
+            <p>
+              Understanding what LLMs are—and what they're not—makes you better
+              prepared to:
+            </p>
+            <ul>
+              <li>Use AI tools with more confidence and less confusion</li>
+              <li>
+                Spot real opportunities for your organization (and avoid hype)
+              </li>
+              <li>
+                Talk knowledgeably with technical teams, vendors, or clients
+              </li>
+              <li>
+                Design better questions and prompts for AI-powered systems
+              </li>
+            </ul>
+          </section>
+
+          <!-- How Do LLMs Work? (For Non-Techies) -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              🔍 How Do LLMs Actually Work?
+            </h2>
+            <p>
+              Imagine teaching a super-powered text predictor that’s read almost
+              every book, article, and website—but never truly “understands”
+              like a person.
+            </p>
+            <ol>
+              <li>
+                <b>Train on huge amounts of text.</b><br />
+                The AI reads and learns language patterns—sentence by sentence,
+                word by word.
+              </li>
+              <li>
+                <b>Break down language into “tokens.”</b><br />
+                Tokens are like word-pieces or building blocks the AI uses to
+                make sense of what you type.
+              </li>
+              <li>
+                <b>Predict what comes next.</b><br />
+                When you ask a question, the AI predicts the most likely next
+                words in response—one step at a time, at lightning speed!
+              </li>
+            </ol>
+            <div class="text-muted">
+              <small
+                ><b>Note:</b> LLMs don’t “think” or have feelings—they mix what
+                they’ve learned to create responses that seem smart or
+                creative.</small
+              >
+            </div>
+          </section>
+
+          <!-- How Are LLMs Created? -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              ⚙️ How Are LLMs Built and Improved?
+            </h2>
+            <ul>
+              <li>
+                <b>Massive Training:</b> AI researchers use powerful computers
+                to feed huge quantities of text into the AI over weeks or
+                months.
+              </li>
+              <li>
+                <b>Pretraining:</b> The AI first learns general language
+                skills—like grammar, facts, and common sense.
+              </li>
+              <li>
+                <b>Fine-tuning:</b> Sometimes, the AI is retrained for special
+                skills, like legal or medical help, company-specific chatbots,
+                or customer service.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Why Are There So Many LLMs? -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              🌍 Why Are There So Many LLM Models and Choices?
+            </h2>
+            <ul>
+              <li>
+                <b>Different goals, different teams:</b> Tech companies and
+                research labs (OpenAI, Google, Meta, Anthropic, and more)
+                develop their own models with unique strengths.
+              </li>
+              <li>
+                <b>Business needs vary:</b> Some LLMs are excellent at creative
+                writing, others at accuracy, some are open-source (free to use
+                or modify), and some are better for privacy or specific
+                languages.
+              </li>
+              <li>
+                <b>Continuous improvement:</b> AI is changing fast! Newer models
+                learn from feedback and get smarter, safer, and more affordable.
+              </li>
+            </ul>
+          </section>
+
+          <!-- What Can LLMs Do? (And Not Do) -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              💡 What Can LLMs Do? And What Are Their Limits?
+            </h2>
+            <ul>
+              <li>
+                <b>LLMs excel at:</b> Drafting text, answering questions,
+                brainstorming ideas, summarizing documents, translating, and
+                more.
+              </li>
+              <li>
+                <b>But!</b> They can make mistakes (“hallucinations”), give
+                outdated info, and sometimes reflect biases from their training
+                data.
+              </li>
+              <li>
+                <b>They are tools, not humans.</b> Always check important facts
+                and trust your own expertise—especially in critical tasks.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Key Concepts Glossary -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              📘 Key LLM Concepts – Explained Simply
+            </h2>
+            <ul>
+              <li>
+                <b>Token:</b> The smallest text “chunks” the AI reads or writes
+                (often a word or part of a word).
+              </li>
+              <li>
+                <b>Parameters:</b> Like “memory settings”—the more a model has,
+                the more language it can learn and use.
+              </li>
+              <li>
+                <b>Context Window:</b> How much recent conversation/history the
+                AI can “keep in mind” at once.
+              </li>
+              <li>
+                <b>Fine-tuning:</b> Teaching the AI a specific skill or industry
+                language after general training.
+              </li>
+              <li>
+                <b>Open-Source vs. Closed:</b> Some AIs are free for anyone to
+                tweak; others are owned/licensed by companies.
+              </li>
+              <li>
+                <b>RAG (Retrieval-Augmented Generation):</b> Models that can
+                pull in live knowledge or documents for better answers.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Myth vs Fact Section -->
+          <section class="mb-4">
+            <h2 class="text-primary fs-4 mb-2">
+              🔎 Myth vs Fact: Common Misconceptions About LLMs
+            </h2>
+            <div class="table-responsive">
+              <table class="table table-myth-fact table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th class="text-center" style="width: 40%">Myth</th>
+                    <th class="text-center" style="width: 60%">Fact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="myth">
+                      "LLMs truly understand what they're saying."
+                    </td>
+                    <td class="fact">
+                      LLMs are pattern matchers—they generate responses based on
+                      what they've seen, but don't actually "understand" in a
+                      human sense.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">"AI models never make mistakes."</td>
+                    <td class="fact">
+                      LLMs can and do make mistakes—sometimes inventing
+                      ("hallucinating") facts or giving outdated or biased
+                      answers. Always check important info.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">"Bigger models are always better."</td>
+                    <td class="fact">
+                      Not always! Some tasks need only smaller, faster, or more
+                      specialized models—bigger is not always smarter or more
+                      cost-effective.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">"All LLMs are the same."</td>
+                    <td class="fact">
+                      Different models have different strengths: some are better
+                      for creativity, others for technical writing, customer
+                      service, privacy, etc.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">"An AI can replace human experts."</td>
+                    <td class="fact">
+                      LLMs are tools to assist and enhance human work—not
+                      replace critical thinking, ethics, or expert judgment.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">
+                      "If it's from an AI, it must be unbiased."
+                    </td>
+                    <td class="fact">
+                      All LLMs reflect the biases of their training data and
+                      designers. Responsible use means understanding and
+                      mitigating biases.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="myth">
+                      "You need to be technical to benefit from LLMs."
+                    </td>
+                    <td class="fact">
+                      With the right training, anyone can use LLMs to solve
+                      business problems, create value, and spark innovation—no
+                      coding required!
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="mb-4">
+            <div class="alert alert-info">
+              <b>The Bottom Line:</b>
+              <br />
+              <span>
+                Understanding LLMs builds a strong foundation for everything
+                that follows—prompts, agents, real business use, and smart
+                conversations about AI.
+              </span>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

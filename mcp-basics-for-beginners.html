@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MCP Basics – Understanding Model Completion Providers (for Non-Techies)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .mcp-tip { background: #eaf6fb; border-left: 5px solid #5bc0de; padding: 1rem; }
+    .mcp-icon { font-size: 1.6em; vertical-align:middle; color: #03a9f4;}
+  </style>
+</head>
+<body class="bg-light">
+
+  <header class="bg-primary text-white py-4 mb-4">
+    <div class="container text-center">
+      <h1 class="display-5 mb-0">MCP Basics</h1>
+      <div class="fs-5">A Friendly Guide to Model Completion Providers<br><span class="fs-6 text-light fst-italic">("How you actually connect to all those AIs")</span></div>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+
+        <section class="mb-4">
+          <div class="alert alert-info shadow-sm">
+            <span class="mcp-icon">💡</span>
+            <strong>Heard of OpenAI, Google Gemini, ChatGPT, or Claude?</strong>
+            <br>This page explains what these “Providers” actually do, and makes it easy to talk about them—even if you have no tech background.
+          </div>
+        </section>
+
+        <!-- What is an MCP? -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-3 mb-2">🌐 What Is a "Model Completion Provider" (MCP)?</h2>
+          <p>
+            When people talk about using “AI” or “LLMs” (Large Language Models), they usually don’t talk directly to the model itself. Instead, they connect through a <b>provider</b>—a company, website, or platform that gives them access to those AIs.
+          </p>
+          <ul>
+            <li><b>The LLM</b> is the brain that can read, write, explain, and answer questions.</li>
+            <li><b>The MCP</b> is like the company running a “library” or “service desk” where you get to interact with that brain.</li>
+          </ul>
+          <div class="rounded bg-white border p-3 mcp-tip mb-2">
+            <b>Analogy:</b> Think of an LLM as a blockbuster movie, and the MCP is like Netflix or Amazon Prime—the place you go to actually watch it!
+          </div>
+        </section>
+
+        <!-- Why Use MCPs? -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-4 mb-2">🤝 Why Do We Use MCPs?</h2>
+          <ul>
+            <li><b>LLMs are huge and complicated.</b> They need powerful computers and constant care—far too complex for most people or businesses to run themselves.</li>
+            <li><b>MCPs "host" these models</b> and make them easy to use, through websites, chatbots, or business apps.</li>
+            <li><b>MCPs handle:</b> updates, security, privacy, and even billing—so you just focus on asking questions or getting work done.</li>
+          </ul>
+        </section>
+
+        <!-- Examples of MCPs (Simple, Everyday) -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-4 mb-2">🚀 Everyday Examples of MCPs</h2>
+          <div>Some of the most popular MCPs you might hear about:</div>
+          <ul>
+            <li>
+              <b>OpenAI</b> &mdash; Maker of ChatGPT, GPT-4. Used by millions for writing, research, planning, and more.
+            </li>
+            <li>
+              <b>Google</b> &mdash; Provider of Gemini (formerly Bard). Built into Google Workspace and other Google tools.
+            </li>
+            <li>
+              <b>Anthropic</b> &mdash; Provides the Claude chatbot (famous for safety and business uses).
+            </li>
+            <li>
+              <b>Microsoft Azure / Amazon AWS / IBM Watson</b> &mdash; Cloud services bringing AI to business apps everywhere.
+            </li>
+            <li>
+              <b>HuggingFace</b> &mdash; An open-source community, letting you try many AI models for free or in private environments.
+            </li>
+          </ul>
+        </section>
+
+        <!-- How Do You Use MCPs? -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-4 mb-2">🛠️ How Do You Actually Use an MCP?</h2>
+          <ol>
+            <li><b>Sign up or log in</b> to a website (like ChatGPT), an app, or your company’s AI-enabled tools.</li>
+            <li><b>Type your question or request</b>—this is called a <b>prompt</b>!</li>
+            <li><b>The MCP sends your prompt</b> to the LLM “brain,” gets the answer, and delivers it right back to you.</li>
+            <li><b>Advanced users and businesses</b> might connect to MCPs using APIs, letting apps use AI in the background.</li>
+          </ol>
+          <div class="rounded mcp-tip mb-3">
+            <b>You don’t need to know code or set up servers.</b><br>Just choose a trusted provider and start experimenting!
+          </div>
+        </section>
+
+        <!-- Why Does It Matter Which MCP You Use? -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-4 mb-2">🔒 Why Does Your Choice of MCP Matter?</h2>
+          <ul>
+            <li>
+              <b>Features:</b> Some MCPs offer unique tools, integrations (like Google Docs), or languages.
+            </li>
+            <li>
+              <b>Privacy and Security:</b> Some keep your data extra safe—important for healthcare, finance, or government.
+            </li>
+            <li>
+              <b>Costs:</b> Some are free for casual use, while others charge based on how much you use (called “usage” or “tokens”).
+            </li>
+            <li>
+              <b>Speed and Support:</b> Some are faster, some have more helpful customer service.
+            </li>
+          </ul>
+          <div class="alert alert-warning mt-2">
+            <b>Smart users and companies often use more than one MCP, choosing the best tool for each need, budget, or security rule.
+          </div>
+        </section>
+
+        <!-- MCP Conversation Confidence -->
+        <section class="mb-5">
+          <h2 class="text-primary fs-4 mb-2">💬 How to Talk About MCPs – Conversation Starters</h2>
+          <ul>
+            <li>“We use [OpenAI/ChatGPT] through their website—it’s our MCP for daily AI questions.”</li>
+            <li>“For sensitive data, our business uses Azure AI as an MCP, because it meets our compliance needs.”</li>
+            <li>“There are several MCPs out there; it’s smart to compare features and security based on your goals.”</li>
+          </ul>
+        </section>
+
+        <!-- Simple Myth vs Fact -->
+        <section class="mb-4">
+          <h2 class="text-primary fs-4 mb-2">🔎 Myth vs Fact: MCPs</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle" style="background-color: #f8f9fa;">
+              <thead class="table-light">
+                <tr>
+                  <th style="width:40%" class="text-center">Myth</th>
+                  <th style="width:60%" class="text-center">Fact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-danger fw-bold">“All AIs are the same—just pick one!”</td>
+                  <td class="text-success fw-bold">Each MCP offers different models, features, privacy, speeds, and prices. The right choice depends on your needs.</td>
+                </tr>
+                <tr>
+                  <td class="text-danger fw-bold">“You have to be a tech expert to use an MCP.”</td>
+                  <td class="text-success fw-bold">No! Most MCPs can be used with a simple website or app—no tech skills needed.</td>
+                </tr>
+                <tr>
+                  <td class="text-danger fw-bold">“Using an MCP means anyone can see my data.”</td>
+                  <td class="text-success fw-bold">Top MCPs offer strong privacy and security; always check their policies, especially for business or sensitive info.</td>
+                </tr>
+                <tr>
+                  <td class="text-danger fw-bold">“Once you pick an MCP, you’re stuck with it.”</td>
+                  <td class="text-success fw-bold">You can use as many MCPs as you like, or switch if your needs change!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="mb-4">
+          <div class="alert alert-primary">
+            <b>In summary:</b><br>
+            Model Completion Providers (MCPs) are your gateway to using today’s powerful AI tools.  
+            <ul class="mb-1">
+              <li>You don’t have to be technical to benefit.</li>
+              <li>Understanding MCPs helps you choose the right AI for your needs and talk about AI confidently in any setting.</li>
+            </ul>            
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
