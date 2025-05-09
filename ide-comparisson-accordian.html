@@ -21,12 +21,13 @@
         max-width: 1200px;
       }
       .accordion-header-title {
-        background-color: #007bff;
+        background-color: #021275;
         color: white;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 0.9rem;
         padding: 1rem;
+        margin-bottom: 1rem;
         border-radius: 8px 8px 0 0;
         text-align: center;
       }
@@ -71,7 +72,7 @@
         font-size: 0.9rem;
         color: #343a40;
       }
-      /* Style for Why It’s Essential: italicized, highlighted */
+      /* Style for Why It's Essential: italicized, highlighted */
       .feature-content div:nth-child(1) {
         background-color: #e7f5ff;
         font-style: italic;
@@ -120,605 +121,611 @@
   </head>
   <body>
     <div class="container">
-      <div class="accordion-container">
-        <div class="accordion-header-title">Features</div>
-        <div class="accordion" id="featureComparison">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseBasePlatform"
-                aria-expanded="true"
-                aria-controls="collapseBasePlatform"
-              >
-                Base Platform
-              </button>
-            </h2>
-            <div
-              id="collapseBasePlatform"
-              class="accordion-collapse collapse show"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Determines familiarity, plugin ecosystem, and ease of
-                      adoption for existing workflows.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Open-source IDE with extensive
-                    extension marketplace
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Fork of VS Code with AI integration
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Built on VS Code, branded as a
-                    “genetic IDE”
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseCodeCompletion"
-                aria-expanded="false"
-                aria-controls="collapseCodeCompletion"
-              >
-                Code Completion
-              </button>
-            </h2>
-            <div
-              id="collapseCodeCompletion"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Impacts coding speed and accuracy; critical for reducing
-                      manual typing and errors.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Basic IntelliSense; enhanced by
-                    extensions like GitHub Copilot
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Tab completion with multi-line,
-                    context-aware suggestions (GPT-4o, Claude 3.5 Sonnet, o1,
-                    cursor-small)
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Inline AI-driven completions with
-                    strong context awareness (Llama 3.1, GPT-4, Claude 3.5
-                    Sonnet for premium)
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="accordion-container">
+            <div class="accordion-header-title">Features</div>
+            <div class="accordion" id="featureComparison">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseBasePlatform"
+                    aria-expanded="true"
+                    aria-controls="collapseBasePlatform"
+                  >
+                    Base Platform
+                  </button>
+                </h2>
+                <div
+                  id="collapseBasePlatform"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Determines familiarity, plugin ecosystem, and ease of
+                          adoption for existing workflows.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Open-source IDE with extensive
+                        extension marketplace
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Fork of VS Code with AI
+                        integration
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Built on VS Code, branded as a
+                        "genetic IDE"
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseAIAgent"
-                aria-expanded="false"
-                aria-controls="collapseAIAgent"
-              >
-                AI Agent/Assistant
-              </button>
-            </h2>
-            <div
-              id="collapseAIAgent"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Enhances productivity by automating complex tasks like
-                      scaffolding or multi-file edits.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>None natively; relies on third-party
-                    extensions (e.g., Copilot Chat)
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Composer (⌘ + I) for project
-                    scaffolding; Agent mode (⌘.) for multi-file edits and
-                    terminal tasks
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Cascade agent auto-gathers context,
-                    generates code across files, and runs shell commands
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTerminal"
-                aria-expanded="false"
-                aria-controls="collapseTerminal"
-              >
-                Terminal Integration
-              </button>
-            </h2>
-            <div
-              id="collapseTerminal"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Streamlines command execution, reducing context-switching
-                      between IDE and terminal.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Built-in terminal with manual
-                    command input
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>⌘ + K translates natural language to
-                    commands; direct terminal interaction
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Chat interface for commands with
-                    “add/run” options; less seamless
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseCodeCompletion"
+                    aria-expanded="false"
+                    aria-controls="collapseCodeCompletion"
+                  >
+                    Code Completion
+                  </button>
+                </h2>
+                <div
+                  id="collapseCodeCompletion"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Impacts coding speed and accuracy; critical for
+                          reducing manual typing and errors.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Basic IntelliSense; enhanced by
+                        extensions like GitHub Copilot
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Tab completion with multi-line,
+                        context-aware suggestions (GPT-4o, Claude 3.5 Sonnet,
+                        o1, cursor-small)
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Inline AI-driven completions
+                        with strong context awareness (Llama 3.1, GPT-4, Claude
+                        3.5 Sonnet for premium)
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseBugDetection"
-                aria-expanded="false"
-                aria-controls="collapseBugDetection"
-              >
-                Bug Detection
-              </button>
-            </h2>
-            <div
-              id="collapseBugDetection"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Saves debugging time by proactively identifying and
-                      fixing issues in code changes.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Basic linting and debugging tools;
-                    enhanced by extensions
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Dedicated Bug Finder scans code
-                    changes; fixes via paid-per-click model
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>No dedicated bug finder; relies on
-                    Cascade for debugging assistance
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseModelSupport"
-                aria-expanded="false"
-                aria-controls="collapseModelSupport"
-              >
-                Model Support
-              </button>
-            </h2>
-            <div
-              id="collapseModelSupport"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Affects AI performance; more powerful models improve
-                      suggestion quality but may cost more.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>No native AI models; depends on
-                    extensions like Copilot
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>GPT-4o, Claude 3.5 Sonnet, o1, custom
-                    cursor-small
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Base: Llama 3.1 70B; Premium: Llama
-                    3.1 405B, GPT-4, Claude 3.5 Sonnet
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseAIAgent"
+                    aria-expanded="false"
+                    aria-controls="collapseAIAgent"
+                  >
+                    AI Agent/Assistant
+                  </button>
+                </h2>
+                <div
+                  id="collapseAIAgent"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Enhances productivity by automating complex tasks
+                          like scaffolding or multi-file edits.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>None natively; relies on
+                        third-party extensions (e.g., Copilot Chat)
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Composer (⌘ + I) for project
+                        scaffolding; Agent mode (⌘.) for multi-file edits and
+                        terminal tasks
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Cascade agent auto-gathers
+                        context, generates code across files, and runs shell
+                        commands
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseContextManagement"
-                aria-expanded="false"
-                aria-controls="collapseContextManagement"
-              >
-                Context Management
-              </button>
-            </h2>
-            <div
-              id="collapseContextManagement"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Ensures AI understands project scope, reducing irrelevant
-                      or incorrect suggestions.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Basic project context via workspace
-                    settings
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>.cursorrules for custom completion
-                    rules; Notepads for searchable context
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Cascade auto-detects project
-                    context; no explicit rule customization
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseUIUX"
-                aria-expanded="false"
-                aria-controls="collapseUIUX"
-              >
-                UI/UX
-              </button>
-            </h2>
-            <div
-              id="collapseUIUX"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Affects user comfort and efficiency; cluttered or
-                      unintuitive UI can hinder workflow.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Clean, customizable VS Code
-                    interface
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Familiar VS Code layout; can feel
-                    cluttered with AI buttons
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Cleaner, more polished UI
-                    (Apple-like aesthetic)
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTerminal"
+                    aria-expanded="false"
+                    aria-controls="collapseTerminal"
+                  >
+                    Terminal Integration
+                  </button>
+                </h2>
+                <div
+                  id="collapseTerminal"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Streamlines command execution, reducing
+                          context-switching between IDE and terminal.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Built-in terminal with manual
+                        command input
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>⌘ + K translates natural language
+                        to commands; direct terminal interaction
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Chat interface for commands
+                        with "add/run" options; less seamless
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseIntegration"
-                aria-expanded="false"
-                aria-controls="collapseIntegration"
-              >
-                Integration with Other IDEs
-              </button>
-            </h2>
-            <div
-              id="collapseIntegration"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Enables flexibility for developers using multiple IDEs or
-                      non-VS Code environments.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Standalone; extensions like Copilot
-                    work in other IDEs
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Primarily standalone; limited
-                    external IDE support
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Codeium extension supports
-                    WebStorm, JetBrains, etc., for broader use
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsePricing"
-                aria-expanded="false"
-                aria-controls="collapsePricing"
-              >
-                Pricing
-              </button>
-            </h2>
-            <div
-              id="collapsePricing"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Impacts affordability, especially for teams or long-term
-                      use; free tiers aid trials.</i
-                    >
-                  </div>
-                  <div><strong>VS Code</strong>Free and open-source</div>
-                  <div>
-                    <strong>Cursor</strong>Free Hobby tier; Pro: $20/month;
-                    Business: $40/user/month
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Free tier; Pro: $15/seat; Premium:
-                    ~$10/month (includes model credits)
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseBugDetection"
+                    aria-expanded="false"
+                    aria-controls="collapseBugDetection"
+                  >
+                    Bug Detection
+                  </button>
+                </h2>
+                <div
+                  id="collapseBugDetection"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Saves debugging time by proactively identifying and
+                          fixing issues in code changes.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Basic linting and debugging
+                        tools; enhanced by extensions
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Dedicated Bug Finder scans code
+                        changes; fixes via paid-per-click model
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>No dedicated bug finder; relies
+                        on Cascade for debugging assistance
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseAdditionalCosts"
-                aria-expanded="false"
-                aria-controls="collapseAdditionalCosts"
-              >
-                Additional Costs
-              </button>
-            </h2>
-            <div
-              id="collapseAdditionalCosts"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Hidden costs can increase expenses, affecting budget
-                      planning for premium features.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Extensions like Copilot may have
-                    separate subscriptions
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Bug Finder fixes cost extra clicks
-                    (post-free tier)
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Model flow action credits can add
-                    complexity to pricing
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseStrengths"
-                aria-expanded="false"
-                aria-controls="collapseStrengths"
-              >
-                Strengths
-              </button>
-            </h2>
-            <div
-              id="collapseStrengths"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Highlights unique advantages, helping match the IDE to
-                      specific project needs.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Extensive extension ecosystem,
-                    highly customizable, free
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Deep project context, fast
-                    completions, robust customization
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>Affordable, intuitive Cascade
-                    agent, cleaner UI, broader IDE compatibility
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseModelSupport"
+                    aria-expanded="false"
+                    aria-controls="collapseModelSupport"
+                  >
+                    Model Support
+                  </button>
+                </h2>
+                <div
+                  id="collapseModelSupport"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Affects AI performance; more powerful models improve
+                          suggestion quality but may cost more.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>No native AI models; depends on
+                        extensions like Copilot
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>GPT-4o, Claude 3.5 Sonnet, o1,
+                        custom cursor-small
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Base: Llama 3.1 70B; Premium:
+                        Llama 3.1 405B, GPT-4, Claude 3.5 Sonnet
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseWeaknesses"
-                aria-expanded="false"
-                aria-controls="collapseWeaknesses"
-              >
-                Weaknesses
-              </button>
-            </h2>
-            <div
-              id="collapseWeaknesses"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Identifies potential dealbreakers, ensuring the IDE
-                      aligns with user priorities.</i
-                    >
-                  </div>
-                  <div>
-                    <strong>VS Code</strong>Lacks native AI, setup can be
-                    complex with extensions
-                  </div>
-                  <div>
-                    <strong>Cursor</strong>Context loss after multiple prompts,
-                    cluttered UI, extra costs for some features
-                  </div>
-                  <div>
-                    <strong>Windsurf</strong>No dedicated bug finder, less
-                    seamless terminal, complex credit system
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseContextManagement"
+                    aria-expanded="false"
+                    aria-controls="collapseContextManagement"
+                  >
+                    Context Management
+                  </button>
+                </h2>
+                <div
+                  id="collapseContextManagement"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Ensures AI understands project scope, reducing
+                          irrelevant or incorrect suggestions.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Basic project context via
+                        workspace settings
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>.cursorrules for custom
+                        completion rules; Notepads for searchable context
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Cascade auto-detects project
+                        context; no explicit rule customization
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseBestFor"
-                aria-expanded="false"
-                aria-controls="collapseBestFor"
-              >
-                Best For
-              </button>
-            </h2>
-            <div
-              id="collapseBestFor"
-              class="accordion-collapse collapse"
-              data-bs-parent="#featureComparison"
-            >
-              <div class="accordion-body">
-                <div class="feature-content">
-                  <div>
-                    <strong>Why It’s Essential</strong
-                    ><i
-                      >Guides choice based on programming languages, project
-                      types, or team workflows.</i
-                    >
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseUIUX"
+                    aria-expanded="false"
+                    aria-controls="collapseUIUX"
+                  >
+                    UI/UX
+                  </button>
+                </h2>
+                <div
+                  id="collapseUIUX"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Affects user comfort and efficiency; cluttered or
+                          unintuitive UI can hinder workflow.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Clean, customizable VS Code
+                        interface
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Familiar VS Code layout; can feel
+                        cluttered with AI buttons
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Cleaner, more polished UI
+                        (Apple-like aesthetic)
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <strong>VS Code</strong>Developers wanting a free,
-                    customizable IDE with manual extension setup
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseIntegration"
+                    aria-expanded="false"
+                    aria-controls="collapseIntegration"
+                  >
+                    Integration with Other IDEs
+                  </button>
+                </h2>
+                <div
+                  id="collapseIntegration"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Enables flexibility for developers using multiple
+                          IDEs or non-VS Code environments.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Standalone; extensions like
+                        Copilot work in other IDEs
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Primarily standalone; limited
+                        external IDE support
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Codeium extension supports
+                        WebStorm, JetBrains, etc., for broader use
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <strong>Cursor</strong>TypeScript/React/Node.js developers
-                    needing project-wide context
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapsePricing"
+                    aria-expanded="false"
+                    aria-controls="collapsePricing"
+                  >
+                    Pricing
+                  </button>
+                </h2>
+                <div
+                  id="collapsePricing"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Impacts affordability, especially for teams or
+                          long-term use; free tiers aid trials.</i
+                        >
+                      </div>
+                      <div><strong>VS Code</strong>Free and open-source</div>
+                      <div>
+                        <strong>Cursor</strong>Free Hobby tier; Pro: $20/month;
+                        Business: $40/user/month
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Free tier; Pro: $15/seat;
+                        Premium: ~$10/month (includes model credits)
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <strong>Windsurf</strong>Developers wanting a
-                    cost-effective, polished IDE with flexible IDE support
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseAdditionalCosts"
+                    aria-expanded="false"
+                    aria-controls="collapseAdditionalCosts"
+                  >
+                    Additional Costs
+                  </button>
+                </h2>
+                <div
+                  id="collapseAdditionalCosts"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Hidden costs can increase expenses, affecting budget
+                          planning for premium features.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Extensions like Copilot may have
+                        separate subscriptions
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Bug Finder fixes cost extra
+                        clicks (post-free tier)
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Model flow action credits can
+                        add complexity to pricing
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseStrengths"
+                    aria-expanded="false"
+                    aria-controls="collapseStrengths"
+                  >
+                    Strengths
+                  </button>
+                </h2>
+                <div
+                  id="collapseStrengths"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Highlights unique advantages, helping match the IDE
+                          to specific project needs.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Extensive extension ecosystem,
+                        highly customizable, free
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Deep project context, fast
+                        completions, robust customization
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Affordable, intuitive Cascade
+                        agent, cleaner UI, broader IDE compatibility
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseWeaknesses"
+                    aria-expanded="false"
+                    aria-controls="collapseWeaknesses"
+                  >
+                    Weaknesses
+                  </button>
+                </h2>
+                <div
+                  id="collapseWeaknesses"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Identifies potential dealbreakers, ensuring the IDE
+                          aligns with user priorities.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Lacks native AI, setup can be
+                        complex with extensions
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>Context loss after multiple
+                        prompts, cluttered UI, extra costs for some features
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>No dedicated bug finder, less
+                        seamless terminal, complex credit system
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseBestFor"
+                    aria-expanded="false"
+                    aria-controls="collapseBestFor"
+                  >
+                    Best For
+                  </button>
+                </h2>
+                <div
+                  id="collapseBestFor"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#featureComparison"
+                >
+                  <div class="accordion-body">
+                    <div class="feature-content">
+                      <div>
+                        <strong>Why It's Essential</strong
+                        ><i
+                          >Guides choice based on programming languages, project
+                          types, or team workflows.</i
+                        >
+                      </div>
+                      <div>
+                        <strong>VS Code</strong>Developers wanting a free,
+                        customizable IDE with manual extension setup
+                      </div>
+                      <div>
+                        <strong>Cursor</strong>TypeScript/React/Node.js
+                        developers needing project-wide context
+                      </div>
+                      <div>
+                        <strong>Windsurf</strong>Developers wanting a
+                        cost-effective, polished IDE with flexible IDE support
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
