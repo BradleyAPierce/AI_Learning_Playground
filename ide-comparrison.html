@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor vs Windsurf vs VS Code Feature Comparison</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: "Arial", sans-serif;
+      }
+      .comparison-table {
+        margin: 2rem auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .comparison-table thead {
+        background-color: #007bff;
+        color: white;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1rem;
+        vertical-align: middle;
+        border: none;
+      }
+      .comparison-table tbody tr {
+        transition: background-color 0.3s;
+      }
+      .comparison-table tbody tr:nth-child(even) {
+        background-color: #f1f3f5;
+      }
+      .comparison-table tbody tr:hover {
+        background-color: #e9ecef;
+      }
+      .comparison-table th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+      .comparison-table td {
+        font-size: 0.9rem; /* Smaller font size for cleaner look */
+        color: #343a40;
+      }
+      /* Style for Why It’s Essential column: italicized, same smaller font */
+      .comparison-table td:nth-child(2) {
+        background-color: #e7f5ff;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 0.9rem; /* Match font size with other columns */
+      }
+      /* Ensure VS Code, Cursor, and Windsurf columns have uniform smaller font */
+      .comparison-table td:nth-child(3),
+      .comparison-table td:nth-child(4),
+      .comparison-table td:nth-child(5) {
+        font-size: 0.9rem; /* Consistent smaller font size */
+      }
+      /* Responsive font size for smaller screens */
+      @media (max-width: 768px) {
+        .comparison-table th,
+        .comparison-table td {
+          font-size: 0.8rem; /* Slightly smaller for mobile */
+          padding: 0.75rem;
+        }
+      }
+      /* Ensure table is scrollable on small screens */
+      .table-responsive {
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table comparison-table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Why It&#39;s Essential to Know</th>
+              <th scope="col">VS Code</th>
+              <th scope="col">Cursor</th>
+              <th scope="col">Windsurf</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base Platform</td>
+              <td>
+                <i
+                  >Determines familiarity, plugin ecosystem, and ease of
+                  adoption for existing workflows.</i
+                >
+              </td>
+              <td>Open-source IDE with extensive extension marketplace</td>
+              <td>Fork of VS Code with AI integration</td>
+              <td>Built on VS Code, branded as a “genetic IDE”</td>
+            </tr>
+            <tr>
+              <td>Code Completion</td>
+              <td>
+                <i
+                  >Impacts coding speed and accuracy; critical for reducing
+                  manual typing and errors.</i
+                >
+              </td>
+              <td>
+                Basic IntelliSense; enhanced by extensions like GitHub Copilot
+              </td>
+              <td>
+                Tab completion with multi-line, context-aware suggestions
+                (GPT-4o, Claude 3.5 Sonnet, o1, cursor-small)
+              </td>
+              <td>
+                Inline AI-driven completions with strong context awareness
+                (Llama 3.1, GPT-4, Claude 3.5 Sonnet for premium)
+              </td>
+            </tr>
+            <tr>
+              <td>AI Agent/Assistant</td>
+              <td>
+                <i
+                  >Enhances productivity by automating complex tasks like
+                  scaffolding or multi-file edits.</i
+                >
+              </td>
+              <td>
+                None natively; relies on third-party extensions (e.g., Copilot
+                Chat)
+              </td>
+              <td>
+                Composer (⌘ + I) for project scaffolding; Agent mode (⌘.) for
+                multi-file edits and terminal tasks
+              </td>
+              <td>
+                Cascade agent auto-gathers context, generates code across files,
+                and runs shell commands
+              </td>
+            </tr>
+            <tr>
+              <td>Terminal Integration</td>
+              <td>
+                <i
+                  >Streamlines command execution, reducing context-switching
+                  between IDE and terminal.</i
+                >
+              </td>
+              <td>Built-in terminal with manual command input</td>
+              <td>
+                ⌘ + K translates natural language to commands; direct terminal
+                interaction
+              </td>
+              <td>
+                Chat interface for commands with “add/run” options; less
+                seamless
+              </td>
+            </tr>
+            <tr>
+              <td>Bug Detection</td>
+              <td>
+                <i
+                  >Saves debugging time by proactively identifying and fixing
+                  issues in code changes.</i
+                >
+              </td>
+              <td>Basic linting and debugging tools; enhanced by extensions</td>
+              <td>
+                Dedicated Bug Finder scans code changes; fixes via
+                paid-per-click model
+              </td>
+              <td>
+                No dedicated bug finder; relies on Cascade for debugging
+                assistance
+              </td>
+            </tr>
+            <tr>
+              <td>Model Support</td>
+              <td>
+                <i
+                  >Affects AI performance; more powerful models improve
+                  suggestion quality but may cost more.</i
+                >
+              </td>
+              <td>No native AI models; depends on extensions like Copilot</td>
+              <td>GPT-4o, Claude 3.5 Sonnet, o1, custom cursor-small</td>
+              <td>
+                Base: Llama 3.1 70B; Premium: Llama 3.1 405B, GPT-4, Claude 3.5
+                Sonnet
+              </td>
+            </tr>
+            <tr>
+              <td>Context Management</td>
+              <td>
+                <i
+                  >Ensures AI understands project scope, reducing irrelevant or
+                  incorrect suggestions.</i
+                >
+              </td>
+              <td>Basic project context via workspace settings</td>
+              <td>
+                .cursorrules for custom completion rules; Notepads for
+                searchable context
+              </td>
+              <td>
+                Cascade auto-detects project context; no explicit rule
+                customization
+              </td>
+            </tr>
+            <tr>
+              <td>UI/UX</td>
+              <td>
+                <i
+                  >Affects user comfort and efficiency; cluttered or unintuitive
+                  UI can hinder workflow.</i
+                >
+              </td>
+              <td>Clean, customizable VS Code interface</td>
+              <td>
+                Familiar VS Code layout; can feel cluttered with AI buttons
+              </td>
+              <td>Cleaner, more polished UI (Apple-like aesthetic)</td>
+            </tr>
+            <tr>
+              <td>Integration with Other IDEs</td>
+              <td>
+                <i
+                  >Enables flexibility for developers using multiple IDEs or
+                  non-VS Code environments.</i
+                >
+              </td>
+              <td>Standalone; extensions like Copilot work in other IDEs</td>
+              <td>Primarily standalone; limited external IDE support</td>
+              <td>
+                Codeium extension supports WebStorm, JetBrains, etc., for
+                broader use
+              </td>
+            </tr>
+            <tr>
+              <td>Pricing</td>
+              <td>
+                <i
+                  >Impacts affordability, especially for teams or long-term use;
+                  free tiers aid trials.</i
+                >
+              </td>
+              <td>Free and open-source</td>
+              <td>Free Hobby tier; Pro: $20/month; Business: $40/user/month</td>
+              <td>
+                Free tier; Pro: $15/seat; Premium: ~$10/month (includes model
+                credits)
+              </td>
+            </tr>
+            <tr>
+              <td>Additional Costs</td>
+              <td>
+                <i
+                  >Hidden costs can increase expenses, affecting budget planning
+                  for premium features.</i
+                >
+              </td>
+              <td>Extensions like Copilot may have separate subscriptions</td>
+              <td>Bug Finder fixes cost extra clicks (post-free tier)</td>
+              <td>Model flow action credits can add complexity to pricing</td>
+            </tr>
+            <tr>
+              <td>Strengths</td>
+              <td>
+                <i
+                  >Highlights unique advantages, helping match the IDE to
+                  specific project needs.</i
+                >
+              </td>
+              <td>Extensive extension ecosystem, highly customizable, free</td>
+              <td>
+                Deep project context, fast completions, robust customization
+              </td>
+              <td>
+                Affordable, intuitive Cascade agent, cleaner UI, broader IDE
+                compatibility
+              </td>
+            </tr>
+            <tr>
+              <td>Weaknesses</td>
+              <td>
+                <i
+                  >Identifies potential dealbreakers, ensuring the IDE aligns
+                  with user priorities.</i
+                >
+              </td>
+              <td>Lacks native AI, setup can be complex with extensions</td>
+              <td>
+                Context loss after multiple prompts, cluttered UI, extra costs
+                for some features
+              </td>
+              <td>
+                No dedicated bug finder, less seamless terminal, complex credit
+                system
+              </td>
+            </tr>
+            <tr>
+              <td>Best For</td>
+              <td>
+                <i
+                  >Guides choice based on programming languages, project types,
+                  or team workflows.</i
+                >
+              </td>
+              <td>
+                Developers wanting a free, customizable IDE with manual
+                extension setup
+              </td>
+              <td>
+                TypeScript/React/Node.js developers needing project-wide context
+              </td>
+              <td>
+                Developers wanting a cost-effective, polished IDE with flexible
+                IDE support
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Bootstrap 5 JS CDN (Optional for interactive components, included for completeness) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
