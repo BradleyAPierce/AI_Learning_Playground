@@ -83,10 +83,10 @@ def create_task_generator_agent():
             "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
             "For each question, you MUST provide a clear explanation of why it's an effective question to ask. "
             "Format your response as follows:\n\n"
-            "1. [Question]\n"
-            "   Explanation: [Detailed explanation]\n\n"
-            "2. [Question]\n"
-            "   Explanation: [Detailed explanation]\n\n"
+            "• Question 1: [Question]\n"
+            "  Explanation: [Detailed explanation]\n\n"
+            "• Question 2: [Question]\n"
+            "  Explanation: [Detailed explanation]\n\n"
             "Continue this exact format for all 10 questions.\n\n"
             "Focus on questions that:\n"
             "- Uncover specific pain points\n"
@@ -132,8 +132,8 @@ async def generate_tasks(goal):
         2. For EACH question, you MUST include an explanation of why it's an effective question to ask
         3. Format each question and explanation as follows:
         
-        [Number]. [Question]
-        Explanation: [Detailed explanation]
+        • Question [Number]: [Question]
+          Explanation: [Detailed explanation]
         
         Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
         Remember to include an explanation for EVERY question."""})
@@ -166,7 +166,9 @@ def run_web_interface():
                 with st.spinner("Generating your qualifying questions..."):
                     tasks = asyncio.run(generate_tasks(user_goal))
                     st.success("Here are your 10 qualifying questions with explanations:")
-                    st.markdown(tasks)
+                    # Format the output with proper markdown spacing
+                    formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
+                    st.markdown(formatted_output)
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
                 st.info("Please try again with a different input or contact support if the issue persists.")
