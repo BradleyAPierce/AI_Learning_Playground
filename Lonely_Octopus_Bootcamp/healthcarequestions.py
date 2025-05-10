@@ -80,13 +80,22 @@ def create_task_generator_agent():
     
     agent_kwargs={
         "system_message": (
-            "You are a Task Generator agent that helps healthcare sales representatives develop qualifying question to undercover their clients business problems. "
-            "When you use the TaskGenerator tool, always pass the entire user goal as a single string. "
-            "Do not attempt to pass structured data or multiple arguments. "
-            "Format your response in two sections: "
-            "1. Questions to Ask: List questions the sales rep can ask to uncover the client's business problems. "
-            "2. Success Criteria: For each question, list what success looks like. "
-            "Never answer anything unrelated to AI Agents."
+            "You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. "
+            "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
+            "For each question, provide a clear explanation of why it's an effective question to ask. "
+            "Format your response as follows:\n\n"
+            "1. First Question?\n"
+            "   - Why this is effective: [explanation]\n\n"
+            "2. Second Question?\n"
+            "   - Why this is effective: [explanation]\n\n"
+            "And so on for all 10 questions.\n\n"
+            "Focus on questions that:\n"
+            "- Uncover specific pain points\n"
+            "- Quantify the impact of current issues\n"
+            "- Identify decision-making processes\n"
+            "- Understand budget and timeline constraints\n"
+            "- Reveal current solution limitations\n"
+            "Never answer anything unrelated to healthcare sales qualifying questions."
         )
     }
 
@@ -107,53 +116,54 @@ def create_task_generator_agent():
 
 async def generate_tasks(goal):
     """
-    Generates a list of qualifying questions and success criteria for a given healthcare sales objective using the Task Generator agent.
+    Generates a list of 10 qualifying questions with explanations for a given healthcare sales situation.
     
     Args:
-        goal (str): The user's goal to break down into qualifying questions
+        goal (str): The client's situation or pain point to generate questions for
         
     Returns:
-        str: The generated list of qualifying questions and success criteria
+        str: The generated list of 10 qualifying questions with explanations
     """
     agent = create_task_generator_agent()
-    response = agent.run(f"""Break down this goal into qualifying questions and success criteria: {goal}
+    response = agent.run(f"""Based on this healthcare client situation: {goal}
     
     Please provide:
-    1. A detailed list of question with clear questions to ask the client
-    2. For each question, specify what success looks like (success criteria)
+    1. Exactly 10 qualifying questions
+    2. For each question, explain why it's an effective question to ask
+    3. Format each question and explanation in a clear, bullet-point style
     
-    Format the response in two clear sections.""")
+    Focus on questions that will help uncover the client's needs, pain points, and decision-making process.""")
     return response
 
 def run_web_interface():
     """
-    Runs the Streamlit web interface for the Task Generator.
+    Runs the Streamlit web interface for the Qualifying Questions Generator.
     """
-    st.set_page_config(page_title="AI Task Generator", layout="centered")
-    st.title("Healthcare Sales Professionals Qualifying Questions Generator")
-    st.write("Generate Qualifying Question that reflect the Healthcare Client's needs with success criteria.")
+    st.set_page_config(page_title="Healthcare Sales Qualifying Questions Generator", layout="centered")
+    st.title("Healthcare Sales Qualifying Questions Generator")
+    st.write("Generate 10 effective qualifying questions based on your client's situation.")
 
-    user_goal = st.text_area("Enter your Healthcare client's current pain points prompt.", 
-                           placeholder="e.g. Start with a customer you currently do business with")
+    user_goal = st.text_area("Enter your client's situation or pain point", 
+                           placeholder="e.g., Client is struggling with patient data management and compliance")
 
-    if st.button("Generate Client's Qualifying Questions and learn what Success Criteria is"):
+    if st.button("Generate Qualifying Questions"):
         if user_goal.strip() == "":
-            st.warning("Please enter a Sales Prompt Objective.")
+            st.warning("Please enter a client situation or pain point.")
         else:
-            with st.spinner("Generating your qualifying questions prompts and success criteria..."):
+            with st.spinner("Generating your qualifying questions..."):
                 tasks = asyncio.run(generate_tasks(user_goal))
-                st.success("Here are your Qualifying Questions and success criteria:")
-                st.markdown(f"```text\n{tasks}\n```")
+                st.success("Here are your 10 qualifying questions with explanations:")
+                st.markdown(tasks)
 
 async def run_cli():
     """
-    Runs the command-line interface for the Task Generator.
+    Runs the command-line interface for the Qualifying Questions Generator.
     """
     # Example usage
-    user_goal = "Learn how to ask successful Qualifying Questions"
-    print(f"\nBreaking down Qualifying Questions for the goal: {user_goal}\n")
+    user_goal = "Client is struggling with patient data management and compliance"
+    print(f"\nGenerating qualifying questions for: {user_goal}\n")
     tasks = await generate_tasks(user_goal)
-    print("\nGenerated effective Qualifying Questions and Success Criteria:")
+    print("\nGenerated Qualifying Questions with Explanations:")
     print(tasks)
 
 if __name__ == "__main__":
