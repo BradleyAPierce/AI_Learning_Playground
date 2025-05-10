@@ -82,20 +82,20 @@ def create_task_generator_agent():
         "system_message": (
             "You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. "
             "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
-            "For each question, provide a clear explanation of why it's an effective question to ask. "
-            "Format your response as follows:\n\n"
-            "1. First Question?\n"
-            "   - Why this is effective: [explanation]\n\n"
-            "2. Second Question?\n"
-            "   - Why this is effective: [explanation]\n\n"
-            "And so on for all 10 questions.\n\n"
+            "For each question, you MUST provide a clear explanation of why it's an effective question to ask. "
+            "You MUST format your response EXACTLY as follows for each question:\n\n"
+            "1. [Question]\n"
+            "   Explanation: [Detailed explanation of why this question is effective]\n\n"
+            "2. [Question]\n"
+            "   Explanation: [Detailed explanation of why this question is effective]\n\n"
+            "Continue this exact format for all 10 questions.\n\n"
             "Focus on questions that:\n"
             "- Uncover specific pain points\n"
             "- Quantify the impact of current issues\n"
             "- Identify decision-making processes\n"
             "- Understand budget and timeline constraints\n"
             "- Reveal current solution limitations\n"
-            "Never answer anything unrelated to healthcare sales qualifying questions."
+            "IMPORTANT: You MUST include an explanation for EVERY question. Never skip the explanation part."
         )
     }
 
@@ -127,12 +127,16 @@ async def generate_tasks(goal):
     agent = create_task_generator_agent()
     response = agent.run(f"""Based on this healthcare client situation: {goal}
     
-    Please provide:
+    You MUST provide:
     1. Exactly 10 qualifying questions
-    2. For each question, explain why it's an effective question to ask
-    3. Format each question and explanation in a clear, bullet-point style
+    2. For EACH question, you MUST include an explanation of why it's an effective question to ask
+    3. Format each question and explanation as follows:
     
-    Focus on questions that will help uncover the client's needs, pain points, and decision-making process.""")
+    [Number]. [Question]
+    Explanation: [Detailed explanation]
+    
+    Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
+    Remember to include an explanation for EVERY question.""")
     return response
 
 def run_web_interface():
@@ -153,7 +157,7 @@ def run_web_interface():
             with st.spinner("Generating your qualifying questions..."):
                 tasks = asyncio.run(generate_tasks(user_goal))
                 st.success("Here are your 10 qualifying questions with explanations:")
-                # Format the output with proper markdown spacing
+                # Format the output with proper markdown spacing and ensure explanations are visible
                 formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
                 st.markdown(formatted_output, unsafe_allow_html=True)
 
