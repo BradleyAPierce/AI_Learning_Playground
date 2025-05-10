@@ -44,17 +44,16 @@ from langchain.tools import Tool
 script_dir = os.path.dirname(os.path.abspath(__file__))
 env_path = os.path.join(script_dir, '.env')
 
-# Load environment variables from .env file (only in local environment)
+# Try to load from .env file only if it exists (suppress warnings)
 if os.path.exists(env_path):
     load_dotenv(env_path, override=True)
-    print(f"Loaded .env file from: {env_path}")
-else:
-    print(f"Warning: .env file not found at: {env_path}")
 
-# Get API key from environment variables
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+# Get API key from Streamlit secrets first, then fall back to environment variables
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY") or os.getenv('OPENAI_API_KEY')
+
 if not OPENAI_API_KEY:
-    raise ValueError("OPENAI_API_KEY environment variable is not set. Please set it in your environment or .env file.")
+    st.error("OpenAI API key not found in Streamlit secrets. Please check your configuration.")
+    st.stop()
 
 def create_task_generator_agent():
     """
@@ -64,7 +63,7 @@ def create_task_generator_agent():
         Agent: The configured Question Generator agent
     """
     # Initialize the language model
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo", api_key=OPENAI_API_KEY)
     
     # Create a real function for the single-input tool
     def task_generator_func(goal_text):
@@ -82,18 +81,7 @@ def create_task_generator_agent():
             "You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. "
             "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
             "For each question, you MUST provide a clear explanation of why it's an effective question to ask. "
-            "Format your response as follows:\n\n"
-            "• Question 1: [Question]\n"
-            "  Explanation: [Detailed explanation]\n\n"
-            "• Question 2: [Question]\n"
-            "  Explanation: [Detailed explanation]\n\n"
-            "Continue this exact format for all 10 questions.\n\n"
-            "Focus on questions that:\n"
-            "- Uncover specific pain points\n"
-            "- Quantify the impact of current issues\n"
-            "- Identify decision-making processes\n"
-            "- Understand budget and timeline constraints\n"
-            "- Reveal current solution limitations"
+            "Format your response as a numbered list with explanations."
         )
     }
 
@@ -103,7 +91,7 @@ def create_task_generator_agent():
         llm=llm,
         agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
         verbose=True,
-        handle_parsing_errors=True,  # Add this to handle parsing errors
+        handle_parsing_errors=True,
         memory=ConversationBufferMemory(
             memory_key="chat_history",
             return_messages=True
