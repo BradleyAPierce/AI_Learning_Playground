@@ -130,18 +130,37 @@ async def generate_tasks(goal):
         You MUST provide:
         1. Exactly 10 qualifying questions
         2. For EACH question, you MUST include an explanation of why it's an effective question to ask
-        3. Format each question and explanation as follows:
+        3. Format each question and explanation EXACTLY as follows:
         
-        • Question [Number]: [Question]
+        • Question 1: [Question]
           Explanation: [Detailed explanation]
         
+        • Question 2: [Question]
+          Explanation: [Detailed explanation]
+        
+        Continue this exact format for all 10 questions. Each question MUST start with a bullet point (•).
         Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
         Remember to include an explanation for EVERY question."""})
         
         # Extract the response from the agent's output
         if isinstance(response, dict) and "output" in response:
-            return response["output"]
-        return str(response)
+            output = response["output"]
+        else:
+            output = str(response)
+            
+        # Ensure proper formatting
+        formatted_output = output.replace("1.", "• Question 1:")
+        formatted_output = formatted_output.replace("2.", "• Question 2:")
+        formatted_output = formatted_output.replace("3.", "• Question 3:")
+        formatted_output = formatted_output.replace("4.", "• Question 4:")
+        formatted_output = formatted_output.replace("5.", "• Question 5:")
+        formatted_output = formatted_output.replace("6.", "• Question 6:")
+        formatted_output = formatted_output.replace("7.", "• Question 7:")
+        formatted_output = formatted_output.replace("8.", "• Question 8:")
+        formatted_output = formatted_output.replace("9.", "• Question 9:")
+        formatted_output = formatted_output.replace("10.", "• Question 10:")
+        
+        return formatted_output
     except Exception as e:
         error_message = f"An error occurred while generating questions: {str(e)}"
         print(error_message)
@@ -168,7 +187,8 @@ def run_web_interface():
                     st.success("Here are your 10 qualifying questions with explanations:")
                     # Format the output with proper markdown spacing
                     formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
-                    st.markdown(formatted_output)
+                    # Ensure proper markdown formatting
+                    st.markdown(formatted_output, unsafe_allow_html=True)
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
                 st.info("Please try again with a different input or contact support if the issue persists.")
