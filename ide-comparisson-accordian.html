@@ -18,7 +18,7 @@
       }
       .accordion-container {
         margin: 2rem auto;
-        max-width: 1200px;
+        width: 100%;
       }
       .accordion-header-title {
         background-color: #021275;
@@ -49,6 +49,10 @@
         color: white !important;
         border-radius: 8px !important;
         padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
       }
       .accordion-button:not(.collapsed) {
         background-color: #0056b3;
@@ -64,7 +68,7 @@
       }
       .feature-content {
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 1rem;
         align-items: start;
       }
@@ -72,7 +76,7 @@
         font-size: 0.9rem;
         color: #343a40;
       }
-      /* Style for Why It's Essential: italicized, highlighted */
+      /* Style for Why It's Essential to Know: italicized, highlighted */
       .feature-content div:nth-child(1) {
         background-color: #e7f5ff;
         font-style: italic;
@@ -117,12 +121,44 @@
           padding: 0.75rem;
         }
       }
+      /* Custom plus/minus icon styles */
+      .accordion-button::after {
+        display: none; /* Remove default arrow */
+      }
+
+      .accordion-button::before {
+        content: "+";
+        width: 24px;
+        height: 24px;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+        color: white;
+        background: transparent;
+        order: 2; /* Move icon to the end */
+      }
+
+      .accordion-button span {
+        order: 1; /* Keep text at the start */
+        flex: 1; /* Allow text to take remaining space */
+        text-align: left;
+      }
+
+      .accordion-button:not(.collapsed)::before {
+        content: "−";
+        transform: rotate(180deg);
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-8">
           <div class="accordion-container">
             <div class="accordion-header-title">Features</div>
             <div class="accordion" id="featureComparison">
@@ -136,7 +172,7 @@
                     aria-expanded="true"
                     aria-controls="collapseBasePlatform"
                   >
-                    Base Platform
+                    <span>Base Platform</span>
                   </button>
                 </h2>
                 <div
@@ -147,7 +183,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Determines familiarity, plugin ecosystem, and ease of
                           adoption for existing workflows.</i
@@ -190,7 +226,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Impacts coding speed and accuracy; critical for
                           reducing manual typing and errors.</i
@@ -235,7 +271,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Enhances productivity by automating complex tasks
                           like scaffolding or multi-file edits.</i
@@ -280,7 +316,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Streamlines command execution, reducing
                           context-switching between IDE and terminal.</i
@@ -323,7 +359,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Saves debugging time by proactively identifying and
                           fixing issues in code changes.</i
@@ -366,7 +402,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Affects AI performance; more powerful models improve
                           suggestion quality but may cost more.</i
@@ -409,7 +445,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Ensures AI understands project scope, reducing
                           irrelevant or incorrect suggestions.</i
@@ -452,7 +488,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Affects user comfort and efficiency; cluttered or
                           unintuitive UI can hinder workflow.</i
@@ -495,7 +531,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Enables flexibility for developers using multiple
                           IDEs or non-VS Code environments.</i
@@ -538,7 +574,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Impacts affordability, especially for teams or
                           long-term use; free tiers aid trials.</i
@@ -578,7 +614,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Hidden costs can increase expenses, affecting budget
                           planning for premium features.</i
@@ -621,7 +657,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Highlights unique advantages, helping match the IDE
                           to specific project needs.</i
@@ -664,7 +700,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Identifies potential dealbreakers, ensuring the IDE
                           aligns with user priorities.</i
@@ -707,7 +743,7 @@
                   <div class="accordion-body">
                     <div class="feature-content">
                       <div>
-                        <strong>Why It's Essential</strong
+                        <strong>Why It's Essential to Know</strong
                         ><i
                           >Guides choice based on programming languages, project
                           types, or team workflows.</i
