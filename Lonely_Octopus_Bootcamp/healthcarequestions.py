@@ -34,11 +34,11 @@ from dotenv import load_dotenv
 import streamlit as st
 
 # Third-party imports
+from langchain_community.chat_models import ChatOpenAI
 from langchain.agents import initialize_agent, AgentType
-from langchain.chat_models import ChatOpenAI
 from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
-from langchain.tools import StructuredTool, Tool
+from langchain.tools import Tool
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -68,14 +68,13 @@ def create_task_generator_agent():
     
     # Create a real function for the single-input tool
     def task_generator_func(goal_text):
-        # Here, you could call another LLM, or just echo for now
         return f"Received goal: {goal_text}"
 
     # Create a Tool for task generation
     task_generator_tool = Tool(
         name="TaskGenerator",
         func=task_generator_func,
-        description="Breaks down a prompt question into qualifing questions to ask the client"
+        description="Breaks down a prompt question into qualifying questions to ask the client"
     )
     
     agent_kwargs={
@@ -83,28 +82,28 @@ def create_task_generator_agent():
             "You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. "
             "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
             "For each question, you MUST provide a clear explanation of why it's an effective question to ask. "
-            "You MUST format your response EXACTLY as follows for each question:\n\n"
+            "Format your response as follows:\n\n"
             "1. [Question]\n"
-            "   Explanation: [Detailed explanation of why this question is effective]\n\n"
+            "   Explanation: [Detailed explanation]\n\n"
             "2. [Question]\n"
-            "   Explanation: [Detailed explanation of why this question is effective]\n\n"
+            "   Explanation: [Detailed explanation]\n\n"
             "Continue this exact format for all 10 questions.\n\n"
             "Focus on questions that:\n"
             "- Uncover specific pain points\n"
             "- Quantify the impact of current issues\n"
             "- Identify decision-making processes\n"
             "- Understand budget and timeline constraints\n"
-            "- Reveal current solution limitations\n"
-            "IMPORTANT: You MUST include an explanation for EVERY question. Never skip the explanation part."
+            "- Reveal current solution limitations"
         )
     }
 
-    # Initialize the agent
+    # Initialize the agent with error handling
     agent = initialize_agent(
         tools=[task_generator_tool],
         llm=llm,
         agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
         verbose=True,
+        handle_parsing_errors=True,  # Add this to handle parsing errors
         memory=ConversationBufferMemory(
             memory_key="chat_history",
             return_messages=True
@@ -124,20 +123,29 @@ async def generate_tasks(goal):
     Returns:
         str: The generated list of 10 qualifying questions with explanations
     """
-    agent = create_task_generator_agent()
-    response = agent.run(f"""Based on this healthcare client situation: {goal}
-    
-    You MUST provide:
-    1. Exactly 10 qualifying questions
-    2. For EACH question, you MUST include an explanation of why it's an effective question to ask
-    3. Format each question and explanation as follows:
-    
-    [Number]. [Question]
-    Explanation: [Detailed explanation]
-    
-    Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
-    Remember to include an explanation for EVERY question.""")
-    return response
+    try:
+        agent = create_task_generator_agent()
+        response = agent.invoke({"input": f"""Based on this healthcare client situation: {goal}
+        
+        You MUST provide:
+        1. Exactly 10 qualifying questions
+        2. For EACH question, you MUST include an explanation of why it's an effective question to ask
+        3. Format each question and explanation as follows:
+        
+        [Number]. [Question]
+        Explanation: [Detailed explanation]
+        
+        Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
+        Remember to include an explanation for EVERY question."""})
+        
+        # Extract the response from the agent's output
+        if isinstance(response, dict) and "output" in response:
+            return response["output"]
+        return str(response)
+    except Exception as e:
+        error_message = f"An error occurred while generating questions: {str(e)}"
+        print(error_message)
+        return error_message
 
 def run_web_interface():
     """
@@ -154,12 +162,14 @@ def run_web_interface():
         if user_goal.strip() == "":
             st.warning("Please enter a client situation or pain point.")
         else:
-            with st.spinner("Generating your qualifying questions..."):
-                tasks = asyncio.run(generate_tasks(user_goal))
-                st.success("Here are your 10 qualifying questions with explanations:")
-                # Format the output with proper markdown spacing and ensure explanations are visible
-                formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
-                st.markdown(formatted_output, unsafe_allow_html=True)
+            try:
+                with st.spinner("Generating your qualifying questions..."):
+                    tasks = asyncio.run(generate_tasks(user_goal))
+                    st.success("Here are your 10 qualifying questions with explanations:")
+                    st.markdown(tasks)
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
+                st.info("Please try again with a different input or contact support if the issue persists.")
 
 async def run_cli():
     """
