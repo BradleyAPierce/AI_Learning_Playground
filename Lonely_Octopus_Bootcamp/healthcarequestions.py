@@ -12,7 +12,7 @@ Date Created: May 07, 2024
 How to Run:
 -----------
 1. Command Line Interface:
-   python3 Lonely_Octopus_Bootcamp/healthcarequestions.py
+   python3 Lonely_Octopus_Bootcamp/healthcarequestions.py --cli
 
 2. Web Interface:
    streamlit run Lonely_Octopus_Bootcamp/healthcarequestions.py
