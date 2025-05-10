@@ -34,9 +34,9 @@ from dotenv import load_dotenv
 import streamlit as st
 
 # Third-party imports
-from langchain_community.chat_models import ChatOpenAI
-from langchain.agents import initialize_agent, AgentType
-from langchain.prompts import MessagesPlaceholder
+from langchain_openai import ChatOpenAI
+from langchain.agents import AgentExecutor, create_react_agent
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
 from langchain.tools import Tool
 
@@ -76,30 +76,33 @@ def create_task_generator_agent():
         description="Breaks down a prompt question into qualifying questions to ask the client"
     )
     
-    agent_kwargs={
-        "system_message": (
-            "You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. "
-            "When given a client's situation or pain point, generate exactly 10 qualifying questions. "
-            "For each question, you MUST provide a clear explanation of why it's an effective question to ask. "
-            "Format your response as a numbered list with explanations."
-        )
-    }
+    # Create the prompt template
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", """You are a Healthcare Sales Qualifying Questions Generator that helps sales representatives develop effective qualifying questions. 
+        When given a client's situation or pain point, generate exactly 10 qualifying questions. 
+        For each question, you MUST provide a clear explanation of why it's an effective question to ask. 
+        Format your response as a numbered list with explanations."""),
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("human", "{input}"),
+        MessagesPlaceholder(variable_name="agent_scratchpad"),
+    ])
 
-    # Initialize the agent with error handling
-    agent = initialize_agent(
+    # Create the agent
+    agent = create_react_agent(llm, [task_generator_tool], prompt)
+    
+    # Create the agent executor
+    agent_executor = AgentExecutor(
+        agent=agent,
         tools=[task_generator_tool],
-        llm=llm,
-        agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
-        verbose=True,
-        handle_parsing_errors=True,
         memory=ConversationBufferMemory(
             memory_key="chat_history",
             return_messages=True
         ),
-        agent_kwargs=agent_kwargs
+        handle_parsing_errors=True,
+        verbose=True
     )
     
-    return agent
+    return agent_executor
 
 async def generate_tasks(goal):
     """
@@ -113,15 +116,17 @@ async def generate_tasks(goal):
     """
     try:
         agent = create_task_generator_agent()
-        response = agent.invoke({"input": f"""Based on this healthcare client situation: {goal}
-        
-        You MUST provide:
-        1. Exactly 10 qualifying questions
-        2. For EACH question, you MUST include an explanation of why it's an effective question to ask
-        3. Format your response as a numbered list with explanations.
-        
-        Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
-        Remember to include an explanation for EVERY question."""})
+        response = agent.invoke({
+            "input": f"""Based on this healthcare client situation: {goal}
+            
+            You MUST provide:
+            1. Exactly 10 qualifying questions
+            2. For EACH question, you MUST include an explanation of why it's an effective question to ask
+            3. Format your response as a numbered list with explanations.
+            
+            Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
+            Remember to include an explanation for EVERY question."""
+        })
         
         # Extract the response from the agent's output
         if isinstance(response, dict) and "output" in response:
