@@ -103,20 +103,20 @@ def create_task_generator_agent():
 
 async def generate_tasks(goal):
     """
-    Generates a list of tasks and success criteria for a given goal using the Task Generator agent.
+    Generates a list of qualifying questions and success criteria for a given healthcare sales objective using the Task Generator agent.
     
     Args:
-        goal (str): The user's goal to break down into tasks
+        goal (str): The user's goal to break down into qualifying questions
         
     Returns:
-        str: The generated list of tasks and success criteria
+        str: The generated list of qualifying questions and success criteria
     """
     agent = create_task_generator_agent()
-    response = agent.run(f"""Break down this goal into tasks and success criteria: {goal}
+    response = agent.run(f"""Break down this goal into qualifying questions and success criteria: {goal}
     
     Please provide:
-    1. A detailed task breakdown with clear steps
-    2. For each task, specify what success looks like (success criteria)
+    1. A detailed list of question with clear questions to ask the client
+    2. For each question, specify what success looks like (success criteria)
     
     Format the response in two clear sections.""")
     return response
