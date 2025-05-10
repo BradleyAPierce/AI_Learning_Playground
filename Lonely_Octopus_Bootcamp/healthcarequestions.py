@@ -121,7 +121,7 @@ async def generate_tasks(goal):
         goal (str): The client's situation or pain point to generate questions for
         
     Returns:
-        str: The generated list of 10 qualifying questions with explanations
+        list: A list of tuples containing (question, explanation) pairs
     """
     try:
         agent = create_task_generator_agent()
@@ -130,15 +130,8 @@ async def generate_tasks(goal):
         You MUST provide:
         1. Exactly 10 qualifying questions
         2. For EACH question, you MUST include an explanation of why it's an effective question to ask
-        3. Format each question and explanation EXACTLY as follows:
+        3. Format your response as a numbered list with explanations.
         
-        • Question 1: [Question]
-          Explanation: [Detailed explanation]
-        
-        • Question 2: [Question]
-          Explanation: [Detailed explanation]
-        
-        Continue this exact format for all 10 questions. Each question MUST start with a bullet point (•).
         Focus on questions that will help uncover the client's needs, pain points, and decision-making process.
         Remember to include an explanation for EVERY question."""})
         
@@ -148,23 +141,37 @@ async def generate_tasks(goal):
         else:
             output = str(response)
             
-        # Ensure proper formatting
-        formatted_output = output.replace("1.", "• Question 1:")
-        formatted_output = formatted_output.replace("2.", "• Question 2:")
-        formatted_output = formatted_output.replace("3.", "• Question 3:")
-        formatted_output = formatted_output.replace("4.", "• Question 4:")
-        formatted_output = formatted_output.replace("5.", "• Question 5:")
-        formatted_output = formatted_output.replace("6.", "• Question 6:")
-        formatted_output = formatted_output.replace("7.", "• Question 7:")
-        formatted_output = formatted_output.replace("8.", "• Question 8:")
-        formatted_output = formatted_output.replace("9.", "• Question 9:")
-        formatted_output = formatted_output.replace("10.", "• Question 10:")
+        # Parse the output into questions and explanations
+        questions = []
+        current_question = None
+        current_explanation = None
         
-        return formatted_output
+        for line in output.split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Check if this is a new question (starts with a number)
+            if line[0].isdigit() and '. ' in line:
+                # Save previous question if it exists
+                if current_question and current_explanation:
+                    questions.append((current_question, current_explanation))
+                
+                # Start new question
+                current_question = line.split('. ', 1)[1]
+                current_explanation = None
+            elif line.lower().startswith('explanation:'):
+                current_explanation = line.split(':', 1)[1].strip()
+        
+        # Add the last question
+        if current_question and current_explanation:
+            questions.append((current_question, current_explanation))
+            
+        return questions
     except Exception as e:
         error_message = f"An error occurred while generating questions: {str(e)}"
         print(error_message)
-        return error_message
+        return []
 
 def run_web_interface():
     """
@@ -183,12 +190,15 @@ def run_web_interface():
         else:
             try:
                 with st.spinner("Generating your qualifying questions..."):
-                    tasks = asyncio.run(generate_tasks(user_goal))
-                    st.success("Here are your 10 qualifying questions with explanations:")
-                    # Format the output with proper markdown spacing
-                    formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
-                    # Ensure proper markdown formatting
-                    st.markdown(formatted_output, unsafe_allow_html=True)
+                    questions = asyncio.run(generate_tasks(user_goal))
+                    if questions:
+                        st.success("Here are your 10 qualifying questions with explanations:")
+                        for i, (question, explanation) in enumerate(questions, 1):
+                            st.markdown(f"**Question {i}:** {question}")
+                            st.markdown(f"*Explanation:* {explanation}")
+                            st.markdown("---")  # Add a separator between questions
+                    else:
+                        st.error("No questions were generated. Please try again.")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
                 st.info("Please try again with a different input or contact support if the issue persists.")
@@ -200,9 +210,11 @@ async def run_cli():
     # Example usage
     user_goal = "Client is struggling with patient data management and compliance"
     print(f"\nGenerating qualifying questions for: {user_goal}\n")
-    tasks = await generate_tasks(user_goal)
+    questions = await generate_tasks(user_goal)
     print("\nGenerated Qualifying Questions with Explanations:")
-    print(tasks)
+    for question, explanation in questions:
+        print(f"Question: {question}")
+        print(f"Explanation: {explanation}")
 
 if __name__ == "__main__":
     # If running with "python week1.py --cli", use CLI
