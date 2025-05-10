@@ -15,6 +15,9 @@ Author: Bradley Pierce
 Date Created: May, 2025
 
 How to Run:
+
+https://share.streamlit.io/
+
 -----------
 Run this script directly in the terminal using:
 python3 Lonely_Octopus_Bootcamp/week0.py

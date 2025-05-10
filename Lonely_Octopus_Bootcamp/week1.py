@@ -14,6 +14,9 @@ Author: Bradley Pierce
 Date Created: May 07, 2025
 
 How to Run:
+
+https://share.streamlit.io/
+
 -----------
 1. Command Line Interface:
    python3 Lonely_Octopus_Bootcamp/week1.py
