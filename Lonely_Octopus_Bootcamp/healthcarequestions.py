@@ -126,19 +126,19 @@ def run_web_interface():
     Runs the Streamlit web interface for the Task Generator.
     """
     st.set_page_config(page_title="AI Task Generator", layout="centered")
-    st.title("Training Sales Professionals to create Effective Prompting Inputs")
-    st.write("Break any goal into a set of actionable tasks with success criteria.")
+    st.title("Healthcare Sales Professionals Qualifying Questions Generator")
+    st.write("Generate Qualifying Question that reflect the Healthcare Client's needs with success criteria.")
 
-    user_goal = st.text_area("Enter your prompt sales objective", 
+    user_goal = st.text_area("Enter your Healthcare client's current pain points prompt.", 
                            placeholder="e.g. Start with a customer you currently do business with")
 
-    if st.button("Generate Success Prompting Steps and learn what Success Criteria is"):
+    if st.button("Generate Client's Qualifying Questions and learn what Success Criteria is"):
         if user_goal.strip() == "":
-            st.warning("Please enter a sales prompt objective.")
+            st.warning("Please enter a Sales Prompt Objective.")
         else:
-            with st.spinner("Generating your sales prompt steps and success criteria..."):
+            with st.spinner("Generating your qualifying questions prompts and success criteria..."):
                 tasks = asyncio.run(generate_tasks(user_goal))
-                st.success("Here are your prompting steps and success criteria:")
+                st.success("Here are your Qualifying Questions and success criteria:")
                 st.markdown(f"```text\n{tasks}\n```")
 
 async def run_cli():
@@ -146,10 +146,10 @@ async def run_cli():
     Runs the command-line interface for the Task Generator.
     """
     # Example usage
-    user_goal = "Learn how to prompt successful sales outcomes"
-    print(f"\nBreaking down prompting steps for the goal: {user_goal}\n")
+    user_goal = "Learn how to ask successful Qualifying Questions"
+    print(f"\nBreaking down Qualifying Questions for the goal: {user_goal}\n")
     tasks = await generate_tasks(user_goal)
-    print("\nGenerated successful Prompting Techniques and Success Criteria:")
+    print("\nGenerated effective Qualifying Questions and Success Criteria:")
     print(tasks)
 
 if __name__ == "__main__":
