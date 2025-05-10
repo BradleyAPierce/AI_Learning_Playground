@@ -153,7 +153,9 @@ def run_web_interface():
             with st.spinner("Generating your qualifying questions..."):
                 tasks = asyncio.run(generate_tasks(user_goal))
                 st.success("Here are your 10 qualifying questions with explanations:")
-                st.markdown(tasks)
+                # Format the output with proper markdown spacing
+                formatted_output = tasks.replace("\n\n", "\n")  # Remove extra newlines
+                st.markdown(formatted_output, unsafe_allow_html=True)
 
 async def run_cli():
     """
